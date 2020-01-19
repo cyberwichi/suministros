@@ -10,6 +10,15 @@
                         >CLIENTES</router-link
                     >
                 </li>
+                <li class="nav-item m-2">
+                    <router-link
+                        tag="button"
+                        class="text-white  btn btn-success "
+                        to="contratos"
+                        >CONTRATOS</router-link
+                    >
+                </li>
+                
                 <li class="nav-item  m-2">
                     <router-link
                         tag="button"
@@ -26,22 +35,7 @@
                         >ARTICULOS</router-link
                     >
                 </li>
-                <li class="nav-item  m-2">
-                    <router-link
-                        tag="button"
-                        class="text-white btn btn-success"
-                        to="articulos"
-                        >ARTICULOS</router-link
-                    >
-                </li>
-                <li class="nav-item  m-2">
-                    <router-link
-                        tag="button"
-                        class="text-white btn btn-success"
-                        to="articulos"
-                        >ARTICULOS</router-link
-                    >
-                </li>
+                
                  <li class="nav-item  my-2 ml-auto ">
                     <button class="btn btn-primary mr-2" @click="$router.go(-1)"> <- </button>
                      <button class="btn btn-primary mr-2" @click="$router.go(+1)"> -> </button>

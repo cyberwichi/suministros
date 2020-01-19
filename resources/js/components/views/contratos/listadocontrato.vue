@@ -1,29 +1,25 @@
 <template>
     <div class="table-responsive">
-        <h2>Listado de Clientes</h2>
+        <h2>Listado de Contratos</h2>
         <table id="myTable" class="table table-bordered">
             <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">C.I.F.</th>
-                    <th scope="col">Direccion</th>
-                    <th scope="col">Telefono</th>
+                    <th scope="col">Importe</th>
+                    <th scope="col">Comentario</th>
                 </tr>
             </thead>
             <tbody>
                 <tr
-                    v-for="cliente in clientes"
-                    :key="cliente.id"
-                    v-on:click="editar(cliente)"                    
+                    v-for="contrato in contratos"
+                    :key="contrato.id"
+                    v-on:click="editar(contrato)"                    
                 >
-                    <th scope="row">{{ cliente.id }}</th>
-                    <td>{{ cliente.nombre }}</td>
-                    <td>{{ cliente.email }}</td>
-                    <td>{{ cliente.cif }}</td>
-                    <td>{{ cliente.direccion }}</td>
-                    <td>{{ cliente.telefono }}</td>
+                    <th scope="row">{{ contrato.id }}</th>
+                    <td>{{ contrato.client.nombre }}</td>
+                    <td>{{ contrato.importe }}</td>
+                    <td>{{ contrato.comentario }}</td>                    
                 </tr>
             </tbody>
         </table>
@@ -33,7 +29,7 @@
                     <form v-on:submit.prevent="actualizarCliente">
                         <div class="modal-header">
                             <h5 class="modal-title">
-                                Edicion de Cliente: {{ client.nombre }}
+                                Edicion de Contrato Numero : {{ contrat.id}}
                             </h5>
                             <button
                                 type="button"
@@ -45,70 +41,47 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group">
-                                <label for="nombre">Nombre</label>
+                             <div class="form-group">
+                                <label for="nombre">Cliente</label>
                                 <br>
                                 <input
                                     type="text"
                                     name="nombre"
-                                    id="nombre"
-                                    v-model="client.nombre"
-                                    class="w-75"
-                                    required
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label for="Email">Email</label>
-                                <br>
-                                <input
-                                    type="email"
-                                    name="Email"
                                     id=""
-                                    v-model="client.email"
+                                    v-model="contrat.client.nombre"
                                     class="w-75"
-                                    required
+                                    readonly
                                 />
                             </div>
                             <div class="form-group">
-                                <label for="Cif">Cif</label>
+                                <label for="importe">Importe</label>
                                 <br>
                                 <input
                                     type="text"
-                                    name="Cif"
+                                    name="importe"
                                     id=""
-                                    v-model="client.cif"
+                                    v-model="contrat.importe"
                                     class="w-75"
                                     required
                                 />
                             </div>
                             <div class="form-group">
-                                <label for="Direccion">Direccion</label>
+                                <label for="comentario">Comentarios</label>
                                 <br>
-                                <input
+                                <textarea
                                     type="text"
-                                    name="Direccion"
+                                    name="comentario"
                                     id=""
-                                    v-model="client.direccion"
+                                    v-model="contrat.comentario"
                                     class="w-75"
+                                    rows="10"
                                     required
                                 />
-                            </div>
-                            <div class="form-group">
-                                <label for="Telefono">Telefono</label>
-                                <br>
-                                <input
-                                    type="text"
-                                    name="Telefono"
-                                    id=""
-                                    v-model="client.telefono"
-                                    class="w-75"
-                                    required
-                                />
-                            </div>
+                            </div>                            
                         </div>
                         <div class="modal-footer">
                             <button v-on:click.prevent="mostrarmodal2" type="button" class="btn btn-danger">
-                                Borrar Cliente
+                                Borrar Contrato
                             </button>
                             <button type="submit" class="btn btn-primary">
                                 Guardar
@@ -143,11 +116,11 @@
                             </button>
                         </div>
                         <div class="modal-body alert alert-danger">
-                            <h5>¿ESTA SEGURO DE QUERER BORRAR LOS DATOS DE ESTE CLIENTE?</h5>
+                            <h5>¿ESTA SEGURO DE QUERER BORRAR LOS DATOS DE ESTE CONTRATO?</h5>
                             <div>Recuerde que los datos seran eliminados de la base de datos definitivamente no siendo recuperables </div>
                         </div>
                         <div class="modal-footer">                            
-                            <button v-on:click.prevent="deleteCliente(client.id)" type="submit" class="btn btn-danger">
+                            <button v-on:click.prevent="deleteCliente(contrat.id)" type="submit" class="btn btn-danger">
                                Confirmar
                             </button>
                             <button
@@ -157,8 +130,7 @@
                             >
                                 Cerrar
                             </button>
-                        </div>
-                    </form>
+                        </div>                    
                 </div>
             </div>
         </div>
@@ -169,21 +141,23 @@ import datatables from "datatables";
 export default {
     data() {
         return {
-            clientes: [],
-            client: {},
+            contratos: [],
+            contrat: {
+                client:{}
+            },
             table:''
         };
     },
     mounted() {
-        this.getClientes();
+        this.getContratos();
     },
     methods: {
         mostrarmodal2(){
             $('#modalConfirmaBorrarCliente').modal('show');
         },
-        getClientes() {
-            axios.get("/api/clientes").then(response => {
-                this.clientes = response.data;
+        getContratos() {
+            axios.get("/api/contrato").then(response => {
+                this.contratos = response.data;
                 this.activarTabla();
             });
         },
@@ -228,10 +202,10 @@ export default {
         },
         editar(cliente) {
             $("#modalEditaCliente").modal("show");
-            this.client = cliente;
+            this.contrat = cliente;
         },
         actualizarCliente(){
-            axios.post('/api/cliente/'+this.client.id, this.client).then(response=>{
+            axios.put('/api/contrato/'+this.contrat.id, this.contrat).then(response=>{
                 if (response.data=='ok'){
 
                     $("#modalEditaCliente").modal("hide");
@@ -239,10 +213,10 @@ export default {
             })
         },
         deleteCliente(id){
-            axios.delete('/api/cliente/'+id).then(response=>{
+            axios.delete('/api/contrato/'+id).then(response=>{
                 if (response.data=='ok') {
-                    let indice= this.clientes.findIndex(cli=>cli.id===id);
-                    this.clientes.splice(indice,1);
+                    let indice= this.contratos.findIndex(cli=>cli.id===id);
+                    this.contratos.splice(indice,1);
                     $('#modalConfirmaBorrarCliente').modal('hide');
                     $("#modalEditaCliente").modal("hide");
                 }

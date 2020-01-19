@@ -30,6 +30,21 @@ export default new Router({
                 component: require('./components/views/nuevocliente').default
         },
         {
+            path: '/contratos',
+            name: 'contratos',
+            component: require('./components/views/contratos/contratos').default
+        },
+        {
+            path: '/nuevocontrato',
+            name: 'nuevocontrato',
+            component: require('./components/views/contratos/nuevocontrato').default
+        },
+        {
+            path: '/listadocontrato',
+            name: 'listadocontrato',
+            component: require('./components/views/contratos/listadocontrato').default
+        },
+        {
             path: '*',
             name: '404',
             component: require('./components/views/404').default

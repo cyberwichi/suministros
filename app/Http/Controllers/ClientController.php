@@ -23,4 +23,26 @@ class ClientController extends Controller
         $client->save();
         return $client;
     }
+    public function update(Request $request, $id)
+    {
+        $client = Client::find($id);
+        $client->nombre = $request->nombre;
+        $client->cif = $request->cif;
+        $client->direccion = $request->direccion;
+        $client->telefono = $request->telefono;
+        $client->email = $request->email;
+        $client->save();
+        return 'ok';
+    }
+    public function delete($id)
+    {
+        $client = Client::find($id);
+        $client->delete();
+        return 'ok';
+    }
+    public function searchcontacto($dd)
+    {
+        $contactos = Client::where('nombre', 'LIKE', '%' . $dd . '%')->get();
+        return $contactos;
+    }
 }
