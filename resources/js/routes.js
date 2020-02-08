@@ -17,7 +17,7 @@ export default new Router({
         {
             path: '/articulos',
             name: 'articulos',
-            component: require('./components/views/articulos').default
+            component: require('./components/views/articles/articulos').default
         },
         {
             path: '/listadoclientes',
@@ -43,6 +43,61 @@ export default new Router({
             path: '/listadocontrato',
             name: 'listadocontrato',
             component: require('./components/views/contratos/listadocontrato').default
+        },
+        {
+            path: '/listadoarticle',
+            name: 'listadoarticle',
+            component: require('./components/views/articles/listadoarticle').default
+        },
+        {
+            path: '/nuevoarticle',
+            name: 'nuevoarticle',
+            component: require('./components/views/articles/nuevoarticle').default
+        },
+        {
+            path: '/proveedores',
+            name: 'proveedores',
+            component: require('./components/views/proveedores/proveedores').default
+        },
+        {
+            path: '/listadoproveedores',
+            name: 'listadoproveedores',
+            component: require('./components/views/proveedores/listadoproveedores').default
+        },
+        {
+            path: '/nuevoproveedor',
+            name: 'nuevoproveedor',
+            component: require('./components/views/proveedores/nuevoproveedor').default
+        },
+        {
+            path: '/avisos',
+            name: 'avisos',
+            component: require('./components/views/avisos/avisos').default
+        },
+        {
+            path: '/nuevoaviso',
+            name: 'nuevoaviso',
+            component: require('./components/views/avisos/nuevoaviso').default
+        },
+        {
+            path: '/listadoavisos',
+            name: 'listadoavisos',
+            component: require('./components/views/avisos/listadoavisos').default
+        },
+        {
+            path: '/albaranes',
+            name: 'albaranes',
+            component: require('./components/views/albaranes/albaranes').default
+        }, {
+            path: '/nuevoalbaran/:id?',
+            name: 'nuevoalbaran',
+            component: require('./components/views/albaranes/nuevoalbaran').default,
+            props:true
+        }, 
+        {
+            path: '/listadoalbaranes',
+            name: 'listadoalbaranes',
+            component: require('./components/views/albaranes/listadoalbaranes').default
         },
         {
             path: '*',

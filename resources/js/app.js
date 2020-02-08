@@ -21,6 +21,8 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('autocompletarclient-component', require('./components/AutocompletarClientComponent.vue').default);
+Vue.component('autocompletarproveedor-component', require('./components/AutocompletarProveedorComponent.vue').default);
+Vue.component('autocompletararticulo-component', require('./components/AutocompletarArticuloComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

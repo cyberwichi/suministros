@@ -10,4 +10,8 @@ class Contrato extends Model
     {
         return $this->belongsTo(Client::class);
     }
+    public function aviso()
+    {
+        return $this->hasMany(Aviso::class);
+    }
 }

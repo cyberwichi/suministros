@@ -28,7 +28,7 @@
             </tbody>
         </table>
         <div id="modalEditaCliente" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <form v-on:submit.prevent="actualizarCliente">
                         <div class="modal-header">
@@ -125,9 +125,9 @@
                 </div>
             </div>
         </div>
-        <div id="modalConfirmaBorrarCliente" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
+        <div id="modalConfirmaBorrarCliente" class="modal bg-danger" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content  bg-warning">
                     
                         <div class="modal-header">
                             <h5 class="modal-title">
@@ -142,7 +142,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body alert alert-danger">
+                        <div class="modal-body alert">
                             <h5>¿ESTA SEGURO DE QUERER BORRAR LOS DATOS DE ESTE CLIENTE?</h5>
                             <div>Recuerde que los datos seran eliminados de la base de datos definitivamente no siendo recuperables </div>
                         </div>

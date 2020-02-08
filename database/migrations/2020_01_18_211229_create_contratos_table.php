@@ -17,6 +17,7 @@ class CreateContratosTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('client_id');
             $table->double('importe', 10, 2);
+            $table->double('saldo', 10, 2);
             $table->text('comentario')->nullable();
             $table->timestamps();
         });

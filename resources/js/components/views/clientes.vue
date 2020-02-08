@@ -2,24 +2,22 @@
     <div>
         <h2>CLIENTES</h2>
         <ul class="nav nav-justified">
-            
             <li class="nav-item">
                 <router-link
                         tag="button"
-                        class="text-white  btn btn-success "
-                        to="listadoClientes"
-                        >LISTADO</router-link
+                        class="text-white  btn btn-primary "
+                        to="nuevocliente"
+                        >NUEVO</router-link
                     >
             </li>
             <li class="nav-item">
                 <router-link
                         tag="button"
-                        class="text-white  btn btn-success "
-                        to="nuevocliente"
-                        >NUEVO</router-link
+                        class="text-white  btn btn-primary "
+                        to="listadoClientes"
+                        >LISTADO</router-link
                     >
-            </li>           
-           
+            </li>
         </ul>
     </div>
 </template>

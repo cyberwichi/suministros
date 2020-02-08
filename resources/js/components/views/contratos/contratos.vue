@@ -6,7 +6,7 @@
             <li class="nav-item">
                 <router-link
                         tag="button"
-                        class="text-white  btn btn-success "
+                        class="text-white  btn btn-primary "
                         to="nuevocontrato"
                         >NUEVO</router-link
                     >
@@ -14,7 +14,7 @@
             <li class="nav-item">
                 <router-link
                         tag="button"
-                        class="text-white  btn btn-success "
+                        class="text-white  btn btn-primary "
                         to="listadocontrato"
                         >LISTADO</router-link
                     >
@@ -22,7 +22,7 @@
             <li class="nav-item">
                <router-link
                         tag="button"
-                        class="text-white  btn btn-success "
+                        class="text-white  btn btn-primary "
                         to="movimientoscontrato"
                         >MOVIMIENTOS</router-link
                     >

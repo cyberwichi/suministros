@@ -7,6 +7,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Importe</th>
+                    <th scope="col">Saldo</th>
                     <th scope="col">Comentario</th>
                 </tr>
             </thead>
@@ -19,12 +20,14 @@
                     <th scope="row">{{ contrato.id }}</th>
                     <td>{{ contrato.client.nombre }}</td>
                     <td>{{ contrato.importe }}</td>
+                    <td v-if="contrato.saldo > 1" class="bg-success">{{ contrato.saldo }}</td>
+                    <td v-else class="bg-danger">{{ contrato.saldo }}</td>
                     <td>{{ contrato.comentario }}</td>                    
                 </tr>
             </tbody>
         </table>
         <div id="modalEditaCliente" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <form v-on:submit.prevent="actualizarCliente">
                         <div class="modal-header">
@@ -66,6 +69,18 @@
                                 />
                             </div>
                             <div class="form-group">
+                                <label for="importe">Saldo</label>
+                                <br>
+                                <input
+                                    type="text"
+                                    name="importe"
+                                    id=""
+                                    v-model="contrat.saldo"
+                                    class="w-75"
+                                    readonly
+                                />
+                            </div>
+                            <div class="form-group">
                                 <label for="comentario">Comentarios</label>
                                 <br>
                                 <textarea
@@ -98,9 +113,9 @@
                 </div>
             </div>
         </div>
-        <div id="modalConfirmaBorrarCliente" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
+        <div id="modalConfirmaBorrarCliente" class="modal bg-danger" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content bg-warning">
                     
                         <div class="modal-header">
                             <h5 class="modal-title">
@@ -115,7 +130,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body alert alert-danger">
+                        <div class="modal-body">
                             <h5>¿ESTA SEGURO DE QUERER BORRAR LOS DATOS DE ESTE CONTRATO?</h5>
                             <div>Recuerde que los datos seran eliminados de la base de datos definitivamente no siendo recuperables </div>
                         </div>

@@ -2,10 +2,26 @@
     <div class="card text-center">
         <div class="card-header">
             <ul class="nav">
+                <li class="nav-item  m-2">
+                    <router-link
+                        tag="button"
+                        class="text-white btn btn-primary"
+                        to="avisos"
+                        >AVISOS</router-link
+                    >
+                </li>
+                <li class="nav-item  m-2">
+                    <router-link
+                        tag="button"
+                        class="text-white btn btn-primary"
+                        to="albaranes"
+                        >ALBARANES</router-link
+                    >
+                </li>
                 <li class="nav-item m-2">
                     <router-link
                         tag="button"
-                        class="text-white  btn btn-success "
+                        class="text-white  btn btn-primary "
                         to="clientes"
                         >CLIENTES</router-link
                     >
@@ -13,7 +29,7 @@
                 <li class="nav-item m-2">
                     <router-link
                         tag="button"
-                        class="text-white  btn btn-success "
+                        class="text-white  btn btn-primary "
                         to="contratos"
                         >CONTRATOS</router-link
                     >
@@ -22,7 +38,7 @@
                 <li class="nav-item  m-2">
                     <router-link
                         tag="button"
-                        class="text-white btn btn-success"
+                        class="text-white btn btn-primary"
                         to="articulos"
                         >ARTICULOS</router-link
                     >
@@ -30,15 +46,17 @@
                 <li class="nav-item  m-2">
                     <router-link
                         tag="button"
-                        class="text-white btn btn-success"
-                        to="articulos"
-                        >ARTICULOS</router-link
+                        class="text-white btn btn-primary"
+                        to="proveedores"
+                        >PROVEEDORES</router-link
                     >
                 </li>
-                
-                 <li class="nav-item  my-2 ml-auto ">
-                    <button class="btn btn-primary mr-2" @click="$router.go(-1)"> <- </button>
-                     <button class="btn btn-primary mr-2" @click="$router.go(+1)"> -> </button>
+
+
+                 <li class="nav-item  my-2 mr-0 ml-auto">
+                    <button class="btn btn-outline-info" @click="$router.go(-1)">
+                        <img src="/images/volver.png" width="20" height="20" alt="">                    
+                    </button>
                 </li>
                
             </ul>

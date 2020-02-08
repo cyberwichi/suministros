@@ -40,6 +40,7 @@ class ContratoController extends Controller
         $contrato->client_id=$request->client_id;
         $contrato->importe=$request->importe;
         $contrato->comentario=$request->comentario;
+        $contrato->saldo=$request->importe;
         $contrato->save();
         return $contrato;
     }
@@ -50,9 +51,10 @@ class ContratoController extends Controller
      * @param  \App\Contrato  $contrato
      * @return \Illuminate\Http\Response
      */
-    public function show(Contrato $contrato)
+    public function show($id)
     {
-        //
+       $contratos=Contrato::where('client_id', $id)->get();
+       return $contratos;
     }
 
     /**
