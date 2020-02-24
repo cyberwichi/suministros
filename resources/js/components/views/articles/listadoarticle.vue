@@ -1,7 +1,7 @@
 <template>
     <div class="table-responsive">
         <h2>Listado de Articulos</h2>
-        <table id="myTable" class="table table-bordered">
+        <table id="myTable" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -185,7 +185,7 @@
                                                 index) in proveedors"
                                                 :key="index"
                                             >
-                                                <td>{{ aux.proveedorid }}</td>
+                                                <td>{{ aux.proveedor_id }}</td>
                                                 <td>
                                                     {{ aux.proveedor.nombre }}
                                                 </td>
@@ -311,7 +311,7 @@ export default {
             table: "",
             proveedors: [],
             au: {
-                proveedorid: "",
+                proveedor_id: "",
                 coste: 0
             }
         };
@@ -370,10 +370,10 @@ export default {
         },
         sumarProveedor(prov) {
             var aux = {};
-            aux.articleid = this.artic.id;
+            aux.article_id = this.artic.id;
             aux.coste = 0.0;
             aux.proveedor = prov;
-            aux.proveedorid=prov.id;
+            aux.proveedor_id=prov.id;
             this.proveedors.push(aux);
         },
         editar(article) {
@@ -390,7 +390,7 @@ export default {
                         .put("/api/proveedorarticuloup/" + this.artic.id)
                         .then(response => {
                             this.proveedors.forEach(data => {
-                                console.log(data);
+                                
                                 axios
                                     .post(
                                         "/api/proveedorarticulo/" +
@@ -398,7 +398,6 @@ export default {
                                         data
                                     )
                                     .then(response => {
-                                        console.log(response.data);
                                         if (response.data == "Ok") {
                                             $("#modalEditaArticle").modal(
                                                 "hide"

@@ -31,8 +31,13 @@ Route::post('contrato/', 'ContratoController@store')->name('nuevocontrato');
 Route::delete('contrato/{id}', 'ContratoController@destroy')->name('borracontrato');
 Route::put('contrato/{id}', 'ContratoController@update')->name('updatecontrato');
 Route::get('cliente/{id}/contratos', 'ContratoController@show')->name('contratosporcliente');
+Route::get('contrato/{id}', 'ContratoController@index2')->name('contratoporid');
+Route::get('movimientos/{id}', 'ContratoController@movimientos')->name('movimientosporcontrato');
+
+
 
 Route::get('articles/', 'ArticleController@index')->name('indexarticles');
+Route::get('articlesapedir/', 'ArticleController@apedir')->name('apedirarticles');
 Route::delete('article/{id}', 'ArticleController@delete')->name('deletearticle');
 Route::put('article/{id}', 'ArticleController@update')->name('updatearticle');
 Route::post('article/', 'ArticleController@new')->name('newarticle');
@@ -46,7 +51,6 @@ Route::get('searchproveedor/{dd}', 'ProveedorController@searchproveedor')->name(
 Route::get('proveedor/{id}', 'ProveedorController@porid')->name('poridproveedor');
 
 Route::post('proveedorarticulo/{id}/', 'ProveedorarticleController@new')->name('proveedorarticle');
-Route::post('proveedoresarticulo/{id}/', 'ProveedorarticleController@new2')->name('proveedoresarticle');
 Route::get('proveedorarticulo/{id}', 'ProveedorarticleController@porarticulo')->name('porarticuloproveedores');
 Route::put('proveedorarticuloup/{id}', 'ProveedorarticleController@update')->name('updatearticuloproveedor');
 Route::get('proveedor/{prov}/articulo/{id}', 'ProveedorarticleController@proveedorarticulo')->name('porarticuloyproveedor');
@@ -59,5 +63,10 @@ Route::put('aviso/{id}', 'AvisoController@update')->name('updateaviso');
 Route::delete('aviso/{id}', 'AvisoController@destroy')->name('deleteaviso');
 
 Route::post('albaran/', 'AlbaranController@store')->name('newalbaran');
-Route::get('albaran/', 'AlbaranController@index')->name('indexalbaran');
+Route::get('albaranes/', 'AlbaranController@index')->name('indexalbaran');
+Route::get('creapdf/{id}', 'AlbaranController@creapdf')->name('creapdfalbaran');
 
+Route::post('pedido/', 'PedidoController@store')->name('newpedido');
+Route::get('pedidos/', 'PedidoController@index')->name('indexpedido');
+Route::delete('pedido/{id}', 'PedidoController@destroy')->name('deleteaviso');
+Route::get('recibepedido/{id}', 'PedidoController@recibe')->name('recibepedido');

@@ -16,7 +16,7 @@ class CreateAvisosTable extends Migration
         Schema::create('avisos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('client_id');
-            $table->string('comentario');
+            $table->string('comentario')->nullable();
             $table->bigInteger('contrato_id');
             $table->boolean('terminado');
             $table->timestamps();

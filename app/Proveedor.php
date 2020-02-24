@@ -16,4 +16,8 @@ class Proveedor extends Model
     {
         return $this->hasMany(Proveedorarticle::class);
     }
+    public function pedido()
+    {
+        return $this->hasMany(Pedido::class);
+    }
 }

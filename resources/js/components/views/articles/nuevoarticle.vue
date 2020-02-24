@@ -1,8 +1,8 @@
 <template>
     <div class="">
         <h2>Nuevo Articulo</h2>
-        <form v-on:submit.stop.prevent="guardacontrato">
-            <div class="form-group">
+        <form v-on:submit.prevent="guardacontrato">
+           <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <br />
                 <textarea
@@ -137,13 +137,13 @@ export default {
         sumarProveedor(prov){
             console.log(prov);
             var aux = {};
-            aux.proveedorid= prov.id;
+            aux.proveedor_id= prov.id;
             aux.proveedornombre= prov.nombre;
             aux.coste= 0.00;            
             this.proveedors.push(aux);
         },
         guardacontrato() {
-            axios.post("/api/article/", this.artic).then(response => {
+            axios.post("/api/article", this.artic).then(response => {
                 this.proveedors.forEach(data=>{
                     console.log(data);
                     axios.post("/api/proveedorarticulo/" + response.data.id, data)
@@ -162,7 +162,9 @@ export default {
                             this.borra = !this.borra;
 
                         });
-                });                
+                });
+                this.proveedors=[];
+
             });
         }
     }

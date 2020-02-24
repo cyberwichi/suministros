@@ -18,3 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('article/', 'ArticleController@new')->name('newarticle');
+Route::post('proveedorarticulo/{id}/', 'ProveedorarticleController@new')->name('proveedorarticle');

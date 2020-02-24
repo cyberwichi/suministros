@@ -14,6 +14,22 @@
                 <router-link
                         tag="button"
                         class="text-white  btn btn-primary "
+                        to="pedirarticle"
+                        >Pedir Articulos</router-link
+                    >
+            </li>
+            <li class="nav-item">
+                <router-link
+                        tag="button"
+                        class="text-white  btn btn-primary "
+                        to="recibirarticle"
+                        >Recibir Articulo</router-link
+                    >
+            </li>
+            <li class="nav-item">
+                <router-link
+                        tag="button"
+                        class="text-white  btn btn-primary "
                         to="listadoarticle"
                         >LISTADO</router-link
                     >

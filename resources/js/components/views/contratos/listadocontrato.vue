@@ -1,7 +1,7 @@
 <template>
     <div class="table-responsive">
         <h2>Listado de Contratos</h2>
-        <table id="myTable" class="table table-bordered">
+        <table id="myTable" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th scope="col">#</th>

@@ -21,4 +21,9 @@ class Aviso extends Model
     {
         return $this->hasMany(DetalleAviso::class);
     }
+    public function albarans()
+    {
+        return $this->hasMany(Albaran::class);
+    }
+
 }

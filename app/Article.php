@@ -18,4 +18,8 @@ class Article extends Model
     {
         return $this->hasMany(DetalleAviso::class, 'id', 'articulo_id');
     }
+    public function pedido()
+    {
+        return $this->hasMany('App\Pedido');
+    }
 }

@@ -40,6 +40,12 @@ export default new Router({
             component: require('./components/views/contratos/nuevocontrato').default
         },
         {
+            path: '/movimientoscontrato',
+            name: 'movimientos',
+            component: require('./components/views/contratos/movimientos').default
+        },
+
+        {
             path: '/listadocontrato',
             name: 'listadocontrato',
             component: require('./components/views/contratos/listadocontrato').default
@@ -48,6 +54,16 @@ export default new Router({
             path: '/listadoarticle',
             name: 'listadoarticle',
             component: require('./components/views/articles/listadoarticle').default
+        },
+        {
+            path: '/pedirarticle',
+            name: 'pedirarticle',
+            component: require('./components/views/articles/pedirarticle').default
+        },
+        {
+            path: '/recibirarticle',
+            name: 'recibirarticle',
+            component: require('./components/views/articles/recibirarticle').default
         },
         {
             path: '/nuevoarticle',

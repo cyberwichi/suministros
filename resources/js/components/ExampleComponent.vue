@@ -1,8 +1,8 @@
 <template>
     <div class="card text-center">
         <div class="card-header">
-            <ul class="nav">
-                <li class="nav-item  m-2">
+            <ul class="nav  nav-fill">
+                <li class="nav-item  ">
                     <router-link
                         tag="button"
                         class="text-white btn btn-primary"
@@ -10,7 +10,7 @@
                         >AVISOS</router-link
                     >
                 </li>
-                <li class="nav-item  m-2">
+                <li class="nav-item  ">
                     <router-link
                         tag="button"
                         class="text-white btn btn-primary"
@@ -18,7 +18,7 @@
                         >ALBARANES</router-link
                     >
                 </li>
-                <li class="nav-item m-2">
+                <li class="nav-item">
                     <router-link
                         tag="button"
                         class="text-white  btn btn-primary "
@@ -26,7 +26,7 @@
                         >CLIENTES</router-link
                     >
                 </li>
-                <li class="nav-item m-2">
+                <li class="nav-item ">
                     <router-link
                         tag="button"
                         class="text-white  btn btn-primary "
@@ -35,7 +35,7 @@
                     >
                 </li>
                 
-                <li class="nav-item  m-2">
+                <li class="nav-item  ">
                     <router-link
                         tag="button"
                         class="text-white btn btn-primary"
@@ -43,7 +43,7 @@
                         >ARTICULOS</router-link
                     >
                 </li>
-                <li class="nav-item  m-2">
+                <li class="nav-item  ">
                     <router-link
                         tag="button"
                         class="text-white btn btn-primary"
@@ -53,7 +53,7 @@
                 </li>
 
 
-                 <li class="nav-item  my-2 mr-0 ml-auto">
+                 <li class="nav-item   ">
                     <button class="btn btn-outline-info" @click="$router.go(-1)">
                         <img src="/images/volver.png" width="20" height="20" alt="">                    
                     </button>

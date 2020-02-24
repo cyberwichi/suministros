@@ -11357,3 +11357,15 @@ a.text-dark:focus {
   }
 }
 
+button {
+  width: 133px;
+  margin: 2px;
+}
+
+.navegacion {
+  background: red;
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, red), color-stop(4%, rgba(247, 255, 0, 0.76)), color-stop(11%, rgba(249, 191, 5, 0.35)), color-stop(23%, rgba(253, 82, 13, 0.2)), color-stop(30%, rgba(255, 18, 18, 0.13)), color-stop(43%, rgba(255, 18, 18, 0)), color-stop(100%, rgba(255, 18, 18, 0)));
+  background: linear-gradient(135deg, red 0%, rgba(247, 255, 0, 0.76) 4%, rgba(249, 191, 5, 0.35) 11%, rgba(253, 82, 13, 0.2) 23%, rgba(255, 18, 18, 0.13) 30%, rgba(255, 18, 18, 0) 43%, rgba(255, 18, 18, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff0000", endColorstr="#ff1212", GradientType=1 );
+}
+

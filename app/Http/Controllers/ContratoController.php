@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Albaran;
 use App\Contrato;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,23 @@ class ContratoController extends Controller
      */
     public function index()
     {
-        $contratos=Contrato::with('client')->get();
+        $contratos=Contrato::with('client')->with('aviso')->get();
         return $contratos;
+    }
+    public function index2($id)
+    {
+        $contrato=Contrato::where('id', $id)->with('aviso')->get();
+        return $contrato;
+    }
+    public function movimientos($id)
+    {
+        $contrato=Contrato::where('id', $id)->with('aviso')->first(); 
+        $avisos=[];
+        foreach ($contrato->aviso as $key=>$value) {           
+            $albaranes= Albaran::where('aviso_id', $value->id)->get();
+            $avisos[$key]=$albaranes;
+        }        
+        return $avisos;
     }
 
     /**
@@ -27,7 +43,7 @@ class ContratoController extends Controller
     {
         //
     }
-
+ 
     /**
      * Store a newly created resource in storage.
      *

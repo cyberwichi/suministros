@@ -13,6 +13,11 @@ class ArticleController extends Controller
         $articulos = Article::get();
         return $articulos;
     }
+    public function apedir()
+    {
+        $articulos = Article::where('stockvendido', '>', 0)->get();
+        return $articulos;
+    }
     public function delete($id)
     {
         $articulo=Article::find($id);

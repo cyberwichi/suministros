@@ -12,17 +12,11 @@ class ProveedorarticleController extends Controller
     {
         $aux = new Proveedorarticle();
         $aux->article_id = $id;
-        $aux->proveedor_id = $request->proveedorid;
+        $aux->proveedor_id = $request->proveedor_id; 
         $aux->coste = $request->coste;
         $aux->save();
 
         return 'Ok';
-    }
-    public function new2($id, Request $request)
-    {
-        foreach ($request as $key => $value) {
-            return $request;
-        };
     }
     public function porarticulo($id)
     {

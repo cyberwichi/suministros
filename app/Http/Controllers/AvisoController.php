@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\Aviso;
 use App\DetalleAviso;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class AvisoController extends Controller
      */
     public function index()
     {
-        $avisos = Aviso::get();
+        $avisos = Aviso::with('albarans')->get();
         return $avisos;
     }
 
@@ -40,10 +41,11 @@ class AvisoController extends Controller
         $aviso = new Aviso();
         $aviso->client_id = $request->client_id;
         $aviso->comentario = $request->comentario;
-        if  ($request->contrato_id){$aviso->contrato_id = $request->contrato_id;}
-        else {
+        if ($request->contrato_id) {
+            $aviso->contrato_id = $request->contrato_id;
+        } else {
             $aviso->contrato_id = 0;
-        }        
+        }
         $aviso->terminado = false;
         $aviso->save();
         foreach ($request->detalleaviso as $key => $value) {
@@ -53,7 +55,10 @@ class AvisoController extends Controller
             $det->cantidad = $value['cantidad'];
             $det->precio = $value['precio'];
             $det->save();
-        } 
+            $articulo = Article::find($value['id']);
+            $articulo->stockvendido += $value['cantidad'];
+            $articulo->save();
+        }
         return 'Ok';
     }
 
@@ -92,8 +97,9 @@ class AvisoController extends Controller
         $aviso = Aviso::find($id);
         $aviso->client_id = $request->client_id;
         $aviso->comentario = $request->comentario;
-        if  ($request->contrato_id){$aviso->contrato_id = $request->contrato_id;}
-        else {
+        if ($request->contrato_id) {
+            $aviso->contrato_id = $request->contrato_id;
+        } else {
             $aviso->contrato_id = 0;
         }
         $aviso->terminado = $request->terminado;
@@ -107,6 +113,18 @@ class AvisoController extends Controller
             $det->precio = $value['precio'];
             $det->save();
         }
+        $avisos = Aviso::get();
+        Article::where('stockvendido', '>', 0)->update(['stockvendido' => 0]);
+
+        foreach ($avisos as $key => $value) {
+            foreach ($value->detalleaviso as $key2 => $value2) {
+                $articulo = Article::find($value2->articulo_id);
+                $articulo->stockvendido += $value2->cantidad;
+                $articulo->save();
+            }            
+        }
+
+
         return 'Ok';
     }
 
@@ -120,6 +138,15 @@ class AvisoController extends Controller
     {
         $aviso = Aviso::destroy($id);
         $detalleaviso = DetalleAviso::where('aviso_id', $id)->delete();
+        $avisos = Aviso::get();
+        Article::where('stockvendido', '>', 0)->update(['stockvendido' => 0]);
+        foreach ($avisos as $key => $value) {
+            foreach ($value->detalleaviso as $key2 => $value2) {
+                $articulo = Article::find($value2->articulo_id);
+                $articulo->stockvendido += $value2->cantidad;
+                $articulo->save();
+            }
+        }
         return 'Ok';
     }
 }

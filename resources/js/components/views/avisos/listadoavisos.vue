@@ -1,7 +1,7 @@
 <template>
     <div class="table-responsive">
         <h2>Listado de Avisos</h2>
-        <table id="myTable" class="table table-bordered">
+        <table id="myTable" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -72,7 +72,7 @@
                                         Contratos del Cliente
                                     </button>
                                     <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-                                        <button type="button" class="dropdown-item border border-secondary rounded bg-light d-flex justify-content-between m-1" v-for="contrate in contrat.client.contrato" :key="contrate.id" v-on:click="contrat.contrato=contrate">
+                                        <button type="button" class="dropdown-item border border-secondary rounded bg-light d-flex justify-content-between m-1" v-for="contrate in contrat.client.contrato" :key="contrate.id" v-on:click="contrat.contrato=contrate;contrat.contrato_id=contrate.id">
                                             <div class="">{{ contrate.comentario }}</div>                       
                                             <div>Importe:{{ contrate.importe }}</div>                        
                                             <div>Saldo:{{ contrate.saldo }}</div>
@@ -309,6 +309,7 @@ export default {
                 if (response.data=='Ok'){
                     $("#modalEditaCliente").modal("hide");
                 }
+                console.log(response.data);
             })
         },
         deleteCliente(id){

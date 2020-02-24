@@ -67,7 +67,7 @@
                         <tr v-for="(detalle,index) in detalleaviso" :key="index">
                             <td>{{detalle.id}}</td>
                             <td>{{detalle.nombre}}</td>
-                            <td class="text-right"> <input v-on:change="actualizaTotal" type="text" v-model="detalle.cantidad"></td>
+                            <td class="text-right"> <input v-on:change="actualizaTotal" style="width:30px;" type="text" v-model="detalle.cantidad"></td>
                             <td class="text-right">{{detalle.precio}}</td>
                             <td class="btn" v-on:click="borradetalle(index)">
                                 X
@@ -151,23 +151,11 @@ export default {
                 contrato_id: this.contrato.id,
                 detalleaviso: this.detalleaviso
             }
-            axios.post('/api/aviso/', request).then( response=>{
+            axios.post('/api/aviso', request).then( response=>{
                 console.log(response.data)
                 alert('Aviso Guardado');
                         this.borra=true;
                         this.borrartodo();
-                /* var request = {
-                    aviso_id: response.data.id,
-                    detalleaviso: this.detalleaviso
-                }
-                axios.post('/api/detalleaviso/' , request).then(response=>{
-                    if (response.data== 'Ok') {
-                        alert('Aviso Guardado');
-                        this.borra=true;
-                        this.borrartodo();
-
-                    }
-                }) */
             })
         },
         borradetalle(index){

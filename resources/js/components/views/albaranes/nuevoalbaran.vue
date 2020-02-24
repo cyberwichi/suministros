@@ -82,7 +82,7 @@
                     />
                 </div>
             </div>
-            <div class="border border-secondary rounded mb-2" v-if="vercontratos">
+            <div class="border border-secondary rounded mb-2" v-if="aviso.contrato">
                 <h5>Contrato</h5>
                     <div
                         class="d-flex justify-content-between text-center px-2"
@@ -155,7 +155,7 @@
                          <tr v-for="(detalle, index) in aviso.detalleaviso" :key="index">
                             <td>{{detalle.article.id}}</td>
                              <td>{{detalle.article.nombre}}</td>
-                            <td class="text-right"> <input v-on:change="actualizaTotal" type="text" v-model="detalle.cantidad"></td>
+                            <td class="text-right"> <input v-on:change="actualizaTotal" type="text" v-model="detalle.cantidad" style="width:40px"></td>
                             <td class="text-right">{{detalle.precio}}</td>
                             <td class="btn" v-on:click="borradetalle(index)">
                                 X
@@ -334,19 +334,15 @@ export default {
                 observaciones: this.observaciones,
                 detallealbaran: this.aviso.detalleaviso
             };
-            axios.post("/api/albaran/", request).then(response => {
-                console.log(response.data);
-                /* var request = {
-                    aviso_id: response.data.id,
-                    detalleaviso: this.detalleaviso
-                };
-                axios.post("/api/detalleaviso/", request).then(response => {
-                    if (response.data == "Ok") {
-                        alert("Aviso Guardado");
-                        this.borra = true;
-                        this.borrartodo();
-                    }
-                }); */
+            axios.post("/api/albaran", request).then(response => {
+                axios.get('/api/creapdf/'+ response.data).then(response=>{
+                    window.open(
+                        "albaranes/albaran" + response.data + ".pdf",
+                        "_blank",
+                        "width=800,height=700"
+                    );
+                    this.$router.push('listadoalbaranes');
+                })               
             });
         },
         borradetalle(index) {
